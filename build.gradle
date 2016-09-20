@@ -1,0 +1,35 @@
+buildscript {
+   repositories {
+       mavenCentral()
+       maven {
+           name = 'Sonatype Nexus Snapshots'
+           url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+       }
+   }
+   dependencies {
+       classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:1.1-SNAPSHOT'
+   }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'liberty'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.21'
+    compile group: 'javax', name: 'javaee-api', version: '7.0'
+    testCompile 'junit:junit:4.12'
+}
+
+liberty {
+       installDir = '/home/jsonhp/Documents/wlp2'
+       serverName = 'defaultServer'
+
+       deploy {
+           file = 'build/libs/Spirit.war'
+       }
+ }
