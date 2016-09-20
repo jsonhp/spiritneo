@@ -15,7 +15,7 @@ public class BatchReader extends AbstractItemReader {
 	
 	@Override
 	public void open(Serializable checkpoint) throws Exception {
-		path = Paths.get("/home/jsonhp/Documents/wlp2/usr/shared/resources/spirit/nomina.csv");
+		path = Paths.get("C:/wlp2/wlp/usr/shared/resources/spirit/nomina.csv");
 	}
 
 	@Override

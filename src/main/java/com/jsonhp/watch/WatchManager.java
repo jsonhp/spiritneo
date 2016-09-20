@@ -8,11 +8,14 @@ import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
-public class WatchManager {
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 
-	public static void main(String[] args) throws IOException {
+public class WatchManager implements ServletContextListener {
+
+	public void initSpirit() throws IOException {
 		WatchService watchService = FileSystems.getDefault().newWatchService();
-		WatchKey key = Paths.get("/home/jsonhp/Documents/wlp2/usr/shared/resources/spirit").register(watchService, ENTRY_CREATE);
+		WatchKey key = Paths.get("C:/wlp2/wlp/usr/shared/resources/spirit").register(watchService, ENTRY_CREATE);
 		
 		while(true) {
 			for (WatchEvent<?> event : key.pollEvents()) {
@@ -20,6 +23,19 @@ public class WatchManager {
 			}
 		}
 		
+	}
+
+	@Override
+	public void contextInitialized(ServletContextEvent sce) {
+		try {
+			initSpirit();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void contextDestroyed(ServletContextEvent sce) {
 	}
 	
 	

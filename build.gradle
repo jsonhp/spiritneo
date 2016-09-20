@@ -23,13 +23,14 @@ dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
     compile group: 'javax', name: 'javaee-api', version: '7.0'
     testCompile 'junit:junit:4.12'
+	compile group: 'javax.inject', name: 'javax.inject', version: '1'
 }
 
 liberty {
-       installDir = '/home/jsonhp/Documents/wlp2'
+       installDir = 'C:/wlp2/wlp/'
        serverName = 'defaultServer'
 
        deploy {
-           file = 'build/libs/Spirit.war'
+           file = 'build/libs/SpiritNeo.war'
        }
  }
